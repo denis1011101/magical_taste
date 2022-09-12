@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brend: MyString
+  name: MyString
+  composition: MyString
+  description: MyString
+
+two:
+  brend: MyString
+  name: MyString
+  composition: MyString
+  description: MyString
