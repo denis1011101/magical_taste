@@ -5,6 +5,15 @@ class Api::V1::MixesController < ApplicationController
     render json: mixes, status: 200
   end
 
+  def selection_of_taste(query)
+    mix = Mix.where("keywords LIKE ?, '#{query}'")
+    if mix
+      render json: mix, status: 200
+    else
+      render json: {error: "Mix not found."}
+    end
+  end
+
   def show
     mix = Mix.find_by(id: params[:id])
     if mix
@@ -12,18 +21,16 @@ class Api::V1::MixesController < ApplicationController
     else
       render json: {error: "Mix not found."}
     end
+  end
 
-=begin
-    private
+  private
 
-    def prod_params
-      params.resquire(:mix).permit([
-                                     :brend,
-                                     :name,
-                                     :composition,
-                                     :description
-                                   ])
-    end
-=end
+  def prod_params
+    params.require(:mix).permit([
+      :brend,
+      :name,
+      :composition,
+      :description
+      ])
   end
 end

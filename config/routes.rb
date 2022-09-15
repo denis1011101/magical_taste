@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 # root "articles#index"
   namespace :api do
     namespace :v1 do
-      resources :mixes, only: [:index, :show]
+      resources :mixes, only: [:index, :show] do
+        get :availability, on: :collection
+      end
     end
   end
 end
