@@ -21,3 +21,10 @@ mix2 = Mix.create(
   composition: "Peach Cobbler 40%, Peach Iced Tea 40%, Cane Mint 20%",
   description: ""
 )
+
+mix3 = Mix.create(
+  brend: "Tangiers",
+  name: "Raspberry Peach Iced Tea",
+  composition: "Raspberry 50%, Peach Iced Tea 50%",
+  description: ""
+)
