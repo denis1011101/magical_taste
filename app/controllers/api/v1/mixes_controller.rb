@@ -10,7 +10,7 @@ class Api::V1::MixesController < ApplicationController
     if mix
       render json: mix, status: 200
     else
-      render json: {error: "Mix not found."}
+      render json: { error: 'Mix not found.' }
     end
   end
 
@@ -19,18 +19,18 @@ class Api::V1::MixesController < ApplicationController
     if mix
       render json: mix, status: 200
     else
-      render json: {error: "Mix not found."}
+      render json: { error: 'Mix not found.' }
     end
   end
 
   private
 
   def prod_params
-    params.require(:mix).permit([
-      :brend,
-      :name,
-      :composition,
-      :description
-      ])
+    params.require(:mix).permit(%i[
+      brend
+      name
+      composition
+      description
+    ])
   end
 end
