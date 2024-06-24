@@ -1,6 +1,7 @@
 # README
 
-This is an application that will help you choose mix of flavors exactly what you need.
+This is an application that will help you choose mix of flavors exactly what you need. 
+Text to telegram bot https://t.me/magical_taste_bot
 
 Things you may want to cover:
 

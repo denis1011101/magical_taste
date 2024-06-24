@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :mixes, only: [:index, :show] do
         get :availability, on: :collection
+        get :selection_of_taste, on: :collection
+        get :random_mix, on: :collection
       end
     end
   end
