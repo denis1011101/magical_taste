@@ -15,14 +15,14 @@ class TelegramBotJob < ApplicationJob
         case message
         when Telegram::Bot::Types::CallbackQuery
           if message.data == 'random_mix'
-            uri = URI('http://localhost:3000/api/v1/mixes/random_mix')
+            uri = URI('http://0.0.0.0:5100/api/v1/mixes/random_mix')
             response = Net::HTTP.get(uri)
             bot.api.send_message(chat_id: message.from.id, text: "Ваш случайный микс: #{response}")
           end
         when Telegram::Bot::Types::Message
           if message.text == '/start'
             kb = [
-              Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Случайный микс', callback_data: 'random_mix')
+              [Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Случайный микс', callback_data: 'random_mix')]
             ]
             markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
             bot.api.send_message(
@@ -32,7 +32,7 @@ class TelegramBotJob < ApplicationJob
             )
           else
             query = URI.encode_www_form_component(message.text)
-            uri = URI("http://localhost:3000/api/v1/mixes/selection_of_taste?query=#{query}")
+            uri = URI("http://0.0.0.0:5100/api/v1/mixes/selection_of_taste?query=#{query}")
             response = Net::HTTP.get(uri)
             bot.api.send_message(chat_id: message.from.id, text: "Результаты по вашему запросу: #{response}")
           end
